@@ -42,3 +42,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ```
 docker compose up -d
 ```
+
+* Connect with Prisma
+```
+npx prisma init
+npx prisma migrate dev
+npx prisma generate
+```
