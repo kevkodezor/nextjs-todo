@@ -38,14 +38,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 * Development
 
-* Up Data Bases
+1. Up Data Bases
 ```
 docker compose up -d
 ```
+2. Rename variables in file .env
 
-* Connect with Prisma
+3. Connect with Prisma
 ```
 npx prisma init
 npx prisma migrate dev
 npx prisma generate
 ```
+4. Exec SEED for [create local data base](http://localhost:3000/api/seed)
