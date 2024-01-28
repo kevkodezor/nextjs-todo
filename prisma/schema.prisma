@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,9 +8,16 @@ datasource db {
 }
 
 model Todo {
-  id String @id @default(uuid())
+  id String   @id @default(uuid())
   description String
-  complete Boolean @default(false)
-  createAt DateTime @default(now())
-  updateAt DateTime @updatedAt
+  complete  Boolean  @default(false)
+  createAt  DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
+
+model Employee {
+  id Int @id @default(autoincrement())
+  name String @db.VarChar
+  isAdmin Boolean @default(false)
+  createAt DateTime @default(now()) @db.Timestamp(6)
 }
