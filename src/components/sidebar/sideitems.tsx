@@ -1,12 +1,27 @@
+'use client'
 import Link from 'next/link';
-import { CiBookmarkCheck } from 'react-icons/ci';
+import { usePathname } from 'next/navigation';
 
-export const SideItems = () => {
+interface Props {
+    icon: React.ReactNode;
+    route: string;
+    title: string;
+}
+
+export const SideItems = ({ icon, route, title}: Props) => {
+
+    const path = usePathname();
+
     return (
         <li>
-            <Link href='/dashboard/rest-todo' className='px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group'>
-                <CiBookmarkCheck size={30} />
-                <span className='group-hover:text-gray-700'>Todos</span>
+            <Link href={route}
+                className={`
+                    px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group
+                    hover:bg-gradient-to-r hover:bg-sky-600 hover:to-cyan-400 hover:text-white
+                    ${path === route ? 'text-white bg-gradient-to-r from-sky-600 to-cyan-400' : ''}
+                `}>
+                {icon}
+                <span className='group-hover:text-white'>{title}</span>
             </Link>
         </li>
     );

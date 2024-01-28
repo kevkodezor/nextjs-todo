@@ -1,7 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CiLogout } from 'react-icons/ci';
+import { CiLogout, CiHome, CiSquareCheck, CiBoxList } from 'react-icons/ci';
 import { SideItems } from './sideitems';
+
+const menuItems = [
+    { icon: <CiHome />, title: 'Home', route: '/dashboard' },
+    { icon: <CiSquareCheck />, title: 'Todos', route: '/dashboard/rest-todo' },
+    { icon: <CiBoxList />, title: 'Server Actions', route: '/dashboard/server-actions' }
+]
 
 export const Sidebar = () => {
     return (
@@ -27,12 +33,18 @@ export const Sidebar = () => {
                         width={150}
                         height={150}
                     />
-                    <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">Cynthia J. Watts</h5>
+                    <h5 className="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">The admin</h5>
                     <span className="hidden text-gray-400 lg:block">Admin</span>
                 </div>
 
-                <ul className='space-y-2 tracking-wide mt-8'>
-                    <SideItems />
+                <ul className='space-y-2 tracking-wide mt-8 overflow-auto'>
+                    {menuItems.map(item => (
+                        <SideItems 
+                            icon={item.icon}
+                            title={item.title}
+                            route={item.route}
+                        />
+                    ))}
                 </ul>
             </div>
 
