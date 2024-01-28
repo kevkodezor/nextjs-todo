@@ -42,12 +42,17 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ```
 docker compose up -d
 ```
-2. Rename variables in file .env
+2. Create copy file .env.template & rename to .env
 
-3. Connect with Prisma
+3. Rename variable env
+
+4. Exec comand ``` yarn install ``` or ```npm install ```
+5. Exec comand ``` yarn dev ``` or ```npm run dev ```
+
+6. Connect with Prisma
 ```
 npx prisma init
 npx prisma migrate dev
 npx prisma generate
 ```
-4. Exec SEED for [create local data base](http://localhost:3000/api/seed)
+7. Exec SEED for [create local data base](http://localhost:3000/api/seed)
