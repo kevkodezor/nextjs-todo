@@ -1,5 +1,6 @@
 import prisma from '@/lib/prisma';
 import { TodoList } from '@/list';
+import { CreateTodo } from '@/list/todos/create';
 
 export const metadata = {
     title: 'Todo list',
@@ -11,6 +12,9 @@ export default async function RestTodo () {
     const todos = await prisma.todo.findMany({ orderBy: { description: 'asc' }});
 
     return (
-        <TodoList data={todos} />
+        <div className='grid gap-5'>
+            <CreateTodo />
+            <TodoList data={todos} />
+        </div>
     );
 }
