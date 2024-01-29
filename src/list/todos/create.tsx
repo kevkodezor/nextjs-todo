@@ -1,10 +1,28 @@
 'use client'
+import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { IoTrashOutline } from 'react-icons/io5';
+import { cretaeTodo } from '@/helpers/todo';
 
 export const CreateTodo = () => {
+
+    const [description, setDescription] = useState('');
+    const router = useRouter();
+
+    const onCreate = async (e:FormEvent) => {
+        e.preventDefault();
+        if (description.trim().length === 0) return;
+        await cretaeTodo(description);
+        setDescription('');
+        router.refresh();
+    }
+
     return (
-        <form className='flex gap-2 items-center'>
-            <input type='text'
+        <form className='flex gap-2 items-center' onSubmit={onCreate}>
+            <input
+                type='text'
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 className='w-6/12 pl-3 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-sky-500 transition-all'
                 placeholder='¿Cuál es la nueva tarea?' />
 
