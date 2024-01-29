@@ -2,7 +2,7 @@
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { IoTrashOutline } from 'react-icons/io5';
-import { cretaeTodo } from '@/helpers/todo';
+import { cretaeTodo, deleteTodos } from '@/helpers/todo';
 
 export const CreateTodo = () => {
 
@@ -14,6 +14,11 @@ export const CreateTodo = () => {
         if (description.trim().length === 0) return;
         await cretaeTodo(description);
         setDescription('');
+        router.refresh();
+    }
+
+    const onDelete = async () => {
+        await deleteTodos();
         router.refresh();
     }
 
@@ -33,10 +38,10 @@ export const CreateTodo = () => {
             <span className='flex flex-1'></span>
 
             <button
-                //TODO: onClick={ () => deleteCompleted() }
+                onClick={() => onDelete()}
                 type='button' className='flex items-center justify-center rounded h-10 bg-red-400 p-2 text-white hover:bg-red-700 transition-all'>
                 <IoTrashOutline />
-                Delete
+                Borrar completadas
             </button>
         </form>
     )
