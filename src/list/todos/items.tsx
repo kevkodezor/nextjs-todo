@@ -1,5 +1,5 @@
 import { Todo } from '@prisma/client'
-import { IoCheckboxOutline } from 'react-icons/io5'
+import { IoCheckboxOutline, IoSquareOutline } from 'react-icons/io5'
 import styles from './item.module.css'
 
 interface Props {
@@ -13,9 +13,12 @@ export const TodoItem = ({ todo }: Props) => {
             <div className={`
                 flex p-2 rounded-md cursor-pointer
                 hover:bg-opacity-60
-                bg-blue-100
+               ${todo.complete ? ' bg-blue-100' : ' bg-red-100'}
             `}>
-                <IoCheckboxOutline size={30} />
+                {todo.complete
+                    ? <IoCheckboxOutline size={30} />
+                    : <IoSquareOutline size={30} />
+                }
             </div>
             <div className='text-center sm:text-left'>
                 {todo.description}
