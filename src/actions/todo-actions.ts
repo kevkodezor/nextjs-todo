@@ -15,3 +15,9 @@ export const updateTodoServer = async (id:string, complete:boolean):Promise<Todo
     revalidatePath('/dashboard/server-actions');
     return updateTodo; 
 }
+
+export const createTodoServer = async (description: string): Promise<Todo> => {
+    const todo = await prisma.todo.create({ data: { description} });
+    revalidatePath('/dashboard/server-actions');
+    return todo;
+}

@@ -3,6 +3,7 @@ import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { IoTrashOutline } from 'react-icons/io5';
 import { cretaeTodo, deleteTodos } from '@/helpers/todo';
+import { createTodoServer } from '@/actions';
 
 export const CreateTodo = () => {
 
@@ -12,9 +13,11 @@ export const CreateTodo = () => {
     const onCreate = async (e:FormEvent) => {
         e.preventDefault();
         if (description.trim().length === 0) return;
-        await cretaeTodo(description);
+        
+        // await cretaeTodo(description); // This function use REST API
+        await createTodoServer(description); // This funcion use server actions
         setDescription('');
-        router.refresh();
+        // router.refresh(); // Enable when use REST API
     }
 
     const onDelete = async () => {
