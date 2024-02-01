@@ -1,3 +1,6 @@
+export const dynamic = 'forve-dynamic';
+export const revalidate = false;
+
 import prisma from '@/lib/prisma';
 import { TodoList } from '@/list';
 import { CreateTodo } from '@/list/todos/create';
