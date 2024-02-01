@@ -3,7 +3,7 @@ import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { IoTrashOutline } from 'react-icons/io5';
 import { cretaeTodo, deleteTodos } from '@/helpers/todo';
-import { createTodoServer } from '@/actions';
+import { createTodoServer, deleteTodosServer } from '@/actions';
 
 export const CreateTodo = () => {
 
@@ -20,7 +20,7 @@ export const CreateTodo = () => {
         // router.refresh(); // Enable when use REST API
     }
 
-    const onDelete = async () => {
+    const onDelete = async () => { // This function use REST API
         await deleteTodos();
         router.refresh();
     }
@@ -41,7 +41,7 @@ export const CreateTodo = () => {
             <span className='flex flex-1'></span>
 
             <button
-                onClick={() => onDelete()}
+                onClick={() => deleteTodosServer()}
                 type='button' className='flex items-center justify-center rounded h-10 bg-red-400 p-2 text-white hover:bg-red-700 transition-all'>
                 <IoTrashOutline />
                 Borrar completadas
