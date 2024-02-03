@@ -1,12 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { CiLogout, CiHome, CiSquareCheck, CiBoxList } from 'react-icons/ci';
+import { PiCookieDuotone } from 'react-icons/pi';
 import { SideItems } from './sideitems';
 
 const menuItems = [
     { icon: <CiHome />, title: 'Home', route: '/dashboard' },
     { icon: <CiSquareCheck />, title: 'Todos', route: '/dashboard/rest-todo' },
-    { icon: <CiBoxList />, title: 'Server Actions', route: '/dashboard/server-actions' }
+    { icon: <CiBoxList />, title: 'Server Actions', route: '/dashboard/server-actions' },
+    { icon: <PiCookieDuotone />, title: 'Cookies', route: '/dashboard/cookies' }
 ]
 
 export const Sidebar = () => {
@@ -37,9 +39,9 @@ export const Sidebar = () => {
                     <span className="hidden text-gray-400 lg:block">Admin</span>
                 </div>
 
-                <ul className='space-y-2 tracking-wide mt-8 overflow-auto'>
+                <ul key='8991' className='space-y-2 tracking-wide mt-8 overflow-auto'>
                     {menuItems.map(item => (
-                        <SideItems 
+                        <SideItems
                             icon={item.icon}
                             title={item.title}
                             route={item.route}
