@@ -3,12 +3,14 @@ import Link from 'next/link';
 import { CiLogout, CiHome, CiSquareCheck, CiBoxList } from 'react-icons/ci';
 import { PiCookieDuotone } from 'react-icons/pi';
 import { SideItems } from './sideitems';
+import { IoCartOutline } from 'react-icons/io5';
 
 const menuItems = [
     { icon: <CiHome />, title: 'Home', route: '/dashboard' },
     { icon: <CiSquareCheck />, title: 'Todos', route: '/dashboard/rest-todo' },
     { icon: <CiBoxList />, title: 'Server Actions', route: '/dashboard/server-actions' },
-    { icon: <PiCookieDuotone />, title: 'Cookies', route: '/dashboard/cookies' }
+    { icon: <PiCookieDuotone />, title: 'Cookies', route: '/dashboard/cookies' },
+    { icon: <IoCartOutline />, title: 'Products', route: '/dashboard/products' },
 ]
 
 export const Sidebar = () => {
