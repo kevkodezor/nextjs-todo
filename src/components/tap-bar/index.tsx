@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react';
+import { setCookie } from 'cookies-next';
 
 interface Props {
     indexTab?: number;
@@ -10,7 +11,10 @@ export const TabBar = ({ indexTab = 1, optionsTab = [1,2,3,4,5] }:Props) => {
 
     const [selected, setSetselected] = useState(indexTab);
 
-    const onTab = (tab:number) => setSetselected(tab);
+    const onTab = (tab:number) => {
+        setSetselected(tab);
+        setCookie('selectedTab', tab.toString());
+    }
 
     return (
         <div className={`flex flex-row space-x-2 rounded-xl bg-gray-200 p-2 grid-cols-${optionsTab.length}`}>
