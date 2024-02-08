@@ -38,7 +38,10 @@ export const ProductsList = ({ id, name, price, rating, image}:Props) => {
                         {rating.toFixed(2)}
                     </span>
                 </div>
-                <ButtonsActions id={id} price={price} />
+                <div className='flex items-center justify-between'>
+                    <span className='text-3xl font-bold text-gray-900 dark:text-white'>{`$${price}`}</span>
+                    <ButtonsActions id={id} />
+                </div>
             </div>
         </div>
     );
