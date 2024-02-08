@@ -27,7 +27,6 @@ export const ShoppingCard = ({ product, quantity }: Props) => {
 
     return (
         <div className='flex items-center shadow rounded-lg w-full bg-gray-800 border-gray-100'>
-
             <div className='p-2'>
                 <Image
                     width={200}
@@ -36,28 +35,21 @@ export const ShoppingCard = ({ product, quantity }: Props) => {
                     src={product.image}
                     alt={product.name} />
             </div>
-
+            
             <div className='px-5 pb-5 w-full flex flex-col mt-2'>
                 <a href='#'>
                     <h3 className='font-semibold text-xl tracking-tight text-white'>
                         {product.name} - <small className='text-sm'>${product.price.toFixed(2)}</small>
                     </h3>
                 </a>
-
                 <div className='flex flex-col items-start justify-between'>
-
                     <span className='text-gray-900 dark:text-white'>
                         Cantidad: {quantity}
                     </span>
                     <span className='font-bold text-white'>
                         Total: ${(product.price * quantity).toFixed(2)}
                     </span>
-
-
-
                 </div>
-
-
             </div>
 
             <div className='flex p-5 items-center justify-center'>
@@ -73,6 +65,7 @@ export const ShoppingCard = ({ product, quantity }: Props) => {
                     <IoRemove size={25} />
                 </button>
             </div>
+
         </div>
     )
 }
