@@ -4,4 +4,7 @@ export {
     deleteTodosServer
 } from './todo-actions';
 
-export { addProductCart } from './shopping-cart'
+export {
+    addProductCart,
+    removeProductCart,
+} from './shopping-cart'

@@ -18,3 +18,9 @@ export const addProductCart = (id:string) => {
     }
     setCookie('cart', JSON.stringify(cookieCart));
 }
+
+export const removeProductCart = (id:string) => {
+    const cookieCart = getCart();
+    delete cookieCart[id];
+    setCookie('cart', JSON.stringify(cookieCart));
+}

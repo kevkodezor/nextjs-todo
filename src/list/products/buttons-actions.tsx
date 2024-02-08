@@ -1,7 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation';
 import { IoAddCircleOutline, IoTrashOutline } from 'react-icons/io5'
-import { addProductCart } from '@/actions';
+import { addProductCart, removeProductCart } from '@/actions';
 
 interface Props {
     id: string;
@@ -17,6 +17,11 @@ export const ButtonsActions = ({ id, price }:Props) => {
         router.refresh();
     }
 
+    const onRemove = () => {
+        removeProductCart(id);
+        router.refresh();
+    }
+
   return (
       <div className='flex items-center justify-between'>
           <span className='text-3xl font-bold text-gray-900 dark:text-white'>{`$${price}`}</span>
@@ -28,6 +33,7 @@ export const ButtonsActions = ({ id, price }:Props) => {
                   <IoAddCircleOutline size={25} />
               </button>
               <button
+                  onClick={onRemove}
                   className='text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800'>
                   <IoTrashOutline size={20} />
               </button>
