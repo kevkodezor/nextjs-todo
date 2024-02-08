@@ -7,4 +7,4 @@ export {
 export {
     addProductCart,
     removeProductCart,
-} from './shopping-cart'
+} from './products-cart'
