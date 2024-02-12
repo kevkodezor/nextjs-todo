@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CiLogout, CiHome, CiSquareCheck, CiBoxList, CiUser } from 'react-icons/ci';
+import { CiHome, CiSquareCheck, CiBoxList, CiUser } from 'react-icons/ci';
 import { PiCookieDuotone } from 'react-icons/pi';
 import { SideItems } from './sideitems';
 import { IoCartOutline } from 'react-icons/io5';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { Logout } from '..';
 
 const menuItems = [
     { icon: <CiHome />, title: 'Home', route: '/dashboard' },
@@ -64,10 +65,7 @@ export const Sidebar = async () => {
                         <CiUser />
                         <span className='group-hover:text-gray-700'>Profile</span>
                     </Link>
-                    <button className='px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group'>
-                        <CiLogout />
-                        <span className='group-hover:text-gray-700'>Logout</span>
-                    </button>
+                    <Logout />
                 </div>
             </div>
         </aside>
