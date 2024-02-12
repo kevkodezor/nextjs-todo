@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CiLogout, CiHome, CiSquareCheck, CiBoxList } from 'react-icons/ci';
+import { CiLogout, CiHome, CiSquareCheck, CiBoxList, CiUser } from 'react-icons/ci';
 import { PiCookieDuotone } from 'react-icons/pi';
 import { SideItems } from './sideitems';
 import { IoCartOutline } from 'react-icons/io5';
@@ -59,13 +59,16 @@ export const Sidebar = async () => {
                         />
                     ))}
                 </ul>
-            </div>
-
-            <div className='px-6 -mx-6 pt-4 flex justify-between items-center border-t'>
-                <button className='px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group'>
-                    <CiLogout />
-                    <span className='group-hover:text-gray-700'>Logout</span>
-                </button>
+                <div className='px-6 -mx-6 pt-4 flex justify-between border-t'>
+                    <Link href='/dashboard/profile' className='px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group'>
+                        <CiUser />
+                        <span className='group-hover:text-gray-700'>Profile</span>
+                    </Link>
+                    <button className='px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group'>
+                        <CiLogout />
+                        <span className='group-hover:text-gray-700'>Logout</span>
+                    </button>
+                </div>
             </div>
         </aside>
     );
