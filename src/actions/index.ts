@@ -8,4 +8,6 @@ export {
     addProductCart,
     removeProductCart,
     removeProductCartByOne
-} from './products-cart'
+} from './products-cart';
+
+export { loginCredentials } from './auth';

@@ -5,7 +5,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { Adapter } from 'next-auth/adapters';
-
+import { loginCredentials } from '@/actions';
 
 export const authOptions:NextAuthOptions = {
     adapter: PrismaAdapter(prisma) as Adapter,
@@ -21,22 +21,13 @@ export const authOptions:NextAuthOptions = {
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
-                username: { label: 'Email', type: 'email', placeholder: 'enter your email' },
-                password: { label: 'Password', type: 'password', placeholder: 'enter your password' }
+                email: { label: 'Email', type: 'email', placeholder: 'Enter your email' },
+                password: { label: 'Password', type: 'password', placeholder: 'Enter your password' }
             },
             async authorize(credentials, req) {
-                // Add logic here to look up the user from the credentials supplied
-                const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
-
-                if (user) {
-                    // Any object returned will be saved in `user` property of the JWT
-                    return user
-                } else {
-                    // If you return null then an error will be displayed advising the user to check their details.
-                    return null
-
-                    // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
-                }
+                const user = await loginCredentials(credentials!.email, credentials!.password);
+                if (user) return user;
+                return null;
             }
         }),
     ],
@@ -55,7 +46,6 @@ export const authOptions:NextAuthOptions = {
             return token;
         },
         async session ({ session, token, user }) {
-            console.log(token);
             if (session && session.user) {
                 session.user.rol = token.rol;
                 session.user.id = token.id;
