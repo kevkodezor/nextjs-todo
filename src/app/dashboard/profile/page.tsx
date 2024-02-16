@@ -31,7 +31,7 @@ export default function Profile() {
                 <hr />
                 <h4 className='text-1xl flex justify-between'><b>Correo</b> {session?.user?.email}</h4>
                 <hr />
-                <h4 className='text-1xl flex justify-between'><b>Rol</b> Admin</h4>
+                <h4 className='text-1xl flex justify-between capitalize'><b>Rol</b>{session?.user?.rol?.join(',')}</h4>
             </div>
         </div>
     );
