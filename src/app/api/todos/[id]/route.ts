@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Todo } from "@prisma/client";
 import prisma from "@/lib/prisma";
 import * as yup from 'yup';
+import { getUserSession } from "@/actions/auth";
 
 interface Params {
     params: {
@@ -10,7 +11,13 @@ interface Params {
 }
 
 const getTodo = async (id: string):Promise<Todo | null> => {
+
+    const user = await getUserSession();
+    if (!user) return null;
+
     const todo = await prisma.todo.findUnique({ where: { id }});
+    if (todo?.userId !== user.id) return null;
+    
     return todo;
 }
 

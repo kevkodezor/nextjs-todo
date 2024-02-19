@@ -13,11 +13,10 @@ export const CreateTodo = () => {
     const onCreate = async (e:FormEvent) => {
         e.preventDefault();
         if (description.trim().length === 0) return;
-        
-        // await cretaeTodo(description); // This function use REST API
-        await createTodoServer(description); // This funcion use server actions
+        // await createTodoServer(description); // This funcion use server actions
+        await cretaeTodo(description); // This function use REST API
         setDescription('');
-        // router.refresh(); // Enable when use REST API
+        router.refresh(); // Enable when use REST API
     }
 
     const onDelete = async () => { // This function use REST API

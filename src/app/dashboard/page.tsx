@@ -2,10 +2,11 @@ export const dynamic = 'forve-dynamic';
 export const revalidate = false;
 
 import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 import prisma from '@/lib/prisma';
 import { Widget } from '@/components';
 import { authOptions } from '../api/auth/[...nextauth]/route';
-import { redirect } from 'next/navigation';
+import { getUserSession } from '@/actions/auth';
 
 export const metadata = {
     title: 'Dashboard'
@@ -13,7 +14,13 @@ export const metadata = {
 
 export default async function Dashboard () {
 
-    const todos = await prisma.todo.findMany({ orderBy: { createAt: 'desc' } });
+    const user = await getUserSession();
+    if (!user) redirect('/api/auth/signin');
+
+    const todos = await prisma.todo.findMany({
+        where: { userId: user.id },
+        orderBy: { createAt: 'desc'}
+    }); 
     const completed = todos.filter(todo => todo.complete === true);
     const pending = todos.filter(todo => todo.complete === false);
 
