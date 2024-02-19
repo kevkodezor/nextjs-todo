@@ -56,3 +56,8 @@ npx prisma migrate dev
 npx prisma generate
 ```
 7. Exec SEED for [create local data base](http://localhost:3000/api/seed)
+
+## NOTE:
+
+__user:__ myuser@email.com
+__password:__ 123456
